@@ -18,10 +18,10 @@
         .animate-zoom { animation: subtle-zoom 15s infinite alternate ease-in-out; }
         .modal-active { overflow: hidden; }
 
-        /* 手机端特定样式 */
+        /* 手机端特定样式微调 */
         @media (max-width: 768px) {
-            .hero-title { font-size: 3.8rem !important; letter-spacing: 0.15em !important; }
-            .property-card:hover { transform: none; } /* 移动端取消悬浮位移 */
+            .hero-title { font-size: 3.5rem !important; letter-spacing: 0.15em !important; }
+            .property-card:hover { transform: none; } 
             .story-img-height { height: 400px !important; }
         }
     </style>
@@ -57,12 +57,13 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
-            <div data-aos="fade-up" class="property-card overflow-hidden group shadow-sm">
+            
+            <div data-aos="fade-up" class="property-card overflow-hidden group shadow-sm flex flex-col">
                 <div class="relative h-64 md:h-80 overflow-hidden">
                     <img src="fukushima-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute top-4 left-4 md:top-6 md:left-6 bg-amber-600 text-white px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-widest shadow-lg uppercase">FUKUSHIMA</div>
                 </div>
-                <div class="p-8 md:p-10 text-center">
+                <div class="p-8 md:p-10 text-center flex-1">
                     <h3 class="text-xl md:text-2xl font-bold mb-3 brand-font">シオヒカリ 福島</h3>
                     <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-8 h-10 line-clamp-2">三层一户建，百平大空间。靠近 USJ 与梅田。</p>
                     <div class="flex gap-3">
@@ -72,12 +73,12 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="100" class="property-card overflow-hidden group shadow-sm">
+            <div data-aos="fade-up" data-aos-delay="100" class="property-card overflow-hidden group shadow-sm flex flex-col">
                 <div class="relative h-64 md:h-80 overflow-hidden">
                     <img src="shinsaibashi-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute top-4 left-4 md:top-6 md:left-6 bg-amber-600 text-white px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-widest shadow-lg uppercase">SHINSAIBASHI</div>
                 </div>
-                <div class="p-8 md:p-10 text-center">
+                <div class="p-8 md:p-10 text-center flex-1">
                     <h3 class="text-xl md:text-2xl font-bold mb-3 brand-font">シオヒカリ 心斎橋</h3>
                     <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-8 h-10 line-clamp-2">核心地段精品公寓，步行直达道顿堀。</p>
                     <div class="flex gap-3">
@@ -87,12 +88,12 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="200" class="property-card overflow-hidden group shadow-sm">
+            <div data-aos="fade-up" data-aos-delay="200" class="property-card overflow-hidden group shadow-sm flex flex-col">
                 <div class="relative h-64 md:h-80 overflow-hidden">
                     <img src="nipponbashi201-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute top-4 left-4 md:top-6 md:left-6 bg-amber-600 text-white px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-widest shadow-lg uppercase">NIPPONBASHI 201</div>
                 </div>
-                <div class="p-8 md:p-10 text-center">
+                <div class="p-8 md:p-10 text-center flex-1">
                     <h3 class="text-xl md:text-2xl font-bold mb-3 brand-font">日本橋 201</h3>
                     <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-8 h-10 line-clamp-2">紧邻黑门市场，宽敞双室设计，深度游首选。</p>
                     <div class="flex gap-3">
@@ -101,8 +102,38 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div data-aos="fade-up" data-aos-delay="300" class="property-card overflow-hidden group shadow-sm flex flex-col">
+                <div class="relative h-64 md:h-80 overflow-hidden">
+                    <img src="nipponbashi301-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-4 left-4 md:top-6 md:left-6 bg-amber-600 text-white px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-widest shadow-lg uppercase">NIPPONBASHI 301</div>
+                </div>
+                <div class="p-8 md:p-10 text-center flex-1">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 brand-font">日本橋 301</h3>
+                    <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-8 h-10 line-clamp-2">高层视野，双卧室设计，享受核心区便利。</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.booking.com/Share-kHiSaI" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-3.5 rounded-xl text-[10px] font-bold hover:bg-amber-600 transition tracking-widest uppercase">Booking</a>
+                        <a href="nipponbashi301.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-3.5 rounded-xl text-[10px] font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
             </div>
+
+            <div data-aos="fade-up" data-aos-delay="400" class="property-card overflow-hidden group shadow-sm flex flex-col">
+                <div class="relative h-64 md:h-80 overflow-hidden">
+                    <img src="tennoji-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-4 left-4 md:top-6 md:left-6 bg-amber-600 text-white px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-widest shadow-lg uppercase">TENNOJI</div>
+                </div>
+                <div class="p-8 md:p-10 text-center flex-1">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 brand-font">シオヒカリ 天王寺</h3>
+                    <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-8 h-10 line-clamp-2">带私人大阳台的一户建，纯正和风体验。</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.booking.com/Share-rhszHM" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-3.5 rounded-xl text-[10px] font-bold hover:bg-amber-600 transition tracking-widest uppercase">Booking</a>
+                        <a href="tennoji.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-3.5 rounded-xl text-[10px] font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="story" class="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-40 border-t border-stone-100">
@@ -186,9 +217,9 @@
         </div>
     </div>
 
-    <footer class="bg-stone-950 py-20 md:py-32 text-center">
-        <div class="brand-font text-xl md:text-3xl font-bold tracking-[0.4em] text-stone-600 mb-8 md:mb-12">シオヒカリ</div>
-        <p class="text-stone-500 text-[8px] md:text-[10px] tracking-[0.4em] uppercase font-bold">
+    <footer class="bg-stone-950 py-20 md:py-32 text-center text-stone-500">
+        <div class="brand-font text-xl md:text-3xl font-bold tracking-[0.4em] mb-8 md:mb-12">シオヒカリ</div>
+        <p class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase font-bold">
             © 2026 SHIO HIKARI OSAKA. ALL RIGHTS RESERVED.
         </p>
     </footer>
