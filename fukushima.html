@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情 | シ奥ヒカリ 福島</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #ffffff; }
+        .brand-font { font-family: 'Noto Serif SC', serif; }
+        .gallery-img { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .gallery-img:hover { filter: brightness(0.9); transform: scale(1.02); }
+        .glass-nav { backdrop-filter: blur(12px); background: rgba(255,255,255,0.8); }
+        .facility-card { background: #faf9f8; border: 1px solid #f1f0ee; transition: all 0.3s ease; }
+        .facility-card:hover { background: #ffffff; border-color: #d6d3d1; transform: translateY(-2px); }
+        iframe { border-radius: 2rem; width: 100%; height: 100%; }
+        .modal-active { overflow: hidden; }
+    </style>
+</head>
+<body class="overflow-x-hidden text-stone-800">
+
+    <nav class="glass-nav px-8 py-5 flex justify-between items-center shadow-sm sticky top-0 z-50">
+        <a href="index.html" class="text-stone-500 text-sm font-bold flex items-center gap-2 hover:text-stone-800 transition">← 返回首页</a>
+        <div class="brand-font text-2xl tracking-widest font-bold text-stone-900">シオヒカリ <span class="text-amber-700 font-light">福島</span></div>
+        <button onclick="toggleContactModal()" class="bg-stone-800 text-white px-5 py-2 text-xs rounded-full hover:bg-amber-700 transition uppercase tracking-widest font-bold">Contact</button>
+    </nav>
+
+    <section class="max-w-7xl mx-auto pt-8 px-4 md:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-6 md:grid-rows-2 gap-3 h-[600px] md:h-[550px] rounded-[2.5rem] overflow-hidden shadow-xl bg-white" data-aos="zoom-in-up">
+            <div class="col-span-2 md:col-span-3 md:row-span-2 overflow-hidden"><img src="fukushima-main.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden"><img src="fukushima-1.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden"><img src="fukushima-2.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden"><img src="fukushima-3.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="hidden md:block overflow-hidden"><img src="fukushima-4.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="hidden md:block md:col-span-2 overflow-hidden"><img src="fukushima-5.jpg" class="gallery-img w-full h-full object-cover"></div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-16 py-20">
+        <div class="lg:col-span-2 space-y-16" data-aos="fade-right">
+            <div class="space-y-8 leading-loose text-stone-600 text-lg font-light">
+    <p>シオヒカリ · 福岛店是一栋独立的三层一户建住宅，专为追求品质与私密空间的家庭或团体旅行者打造。100平米的开阔面积，将生活、社交与睡眠区域完美分割。</p>
+    <p>房屋坐落于大阪极具人气的“美食之都”——福岛区。步行 10 分钟即可抵达 阪神野田站。无论是前往梅田商圈还是环球影城 USJ，这里都是您探索大阪的理想原点。</p>
+    <div class="pl-8 border-l-4 border-amber-600 py-2 italic font-medium text-stone-800">
+        “我们不仅提供一处住所，更是在繁华大阪为您守候的一份归属感。”
+    </div>
+</div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-stone-50 p-6 rounded-3xl text-center"><p class="text-[10px] text-stone-400 uppercase font-bold tracking-widest">Space</p><p class="text-xl font-bold">100 m²</p></div>
+                <div class="bg-stone-50 p-6 rounded-3xl text-center"><p class="text-[10px] text-stone-400 uppercase font-bold tracking-widest">Guests</p><p class="text-xl font-bold">8 人</p></div>
+                <div class="bg-stone-50 p-6 rounded-3xl text-center"><p class="text-[10px] text-stone-400 uppercase font-bold tracking-widest">Beds</p><p class="text-xl font-bold">3 双人床</p></div>
+                <div class="bg-stone-50 p-6 rounded-3xl text-center"><p class="text-[10px] text-stone-400 uppercase font-bold tracking-widest">Station</p><p class="text-xl font-bold">近 阪神野田站</p></div>
+            </div>
+
+            <div class="space-y-10">
+                <h3 class="text-3xl brand-font font-bold">房屋配套设施</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">📶</span><div><p class="font-bold text-stone-800">高速 WiFi</p><p class="text-[10px] text-stone-400 uppercase font-bold">Free Wi-Fi</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">🔑</span><div><p class="font-bold text-stone-800">自动入住</p><p class="text-[10px] text-stone-400 uppercase font-bold">Self Check-in</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">❄️</span><div><p class="font-bold text-stone-800">全屋空调/暖气</p><p class="text-[10px] text-stone-400 uppercase font-bold">HVAC System</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">🛁</span><div><p class="font-bold text-stone-800">独立卫浴</p><p class="text-[10px] text-stone-400 uppercase font-bold">Private Bath</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">🪥</span><div><p class="font-bold text-stone-800">一次性用品</p><p class="text-[10px] text-stone-400 uppercase font-bold">Amentities</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">🩴</span><div><p class="font-bold text-stone-800">室内拖鞋</p><p class="text-[10px] text-stone-400 uppercase font-bold">Slippers</p></div></div>
+                    <div class="facility-card p-6 rounded-3xl flex items-center gap-4"><span class="text-3xl">🧺</span><div><p class="font-bold text-stone-800">洗干一体机</p><p class="text-[10px] text-stone-400 uppercase font-bold">Dryer / Washer</p></div></div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h3 class="text-3xl brand-font font-bold">地理位置</h3>
+                <div class="h-96 w-full shadow-inner overflow-hidden rounded-[3rem] border-8 border-stone-50">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.3734685324025!2d135.4839843!3d34.6957597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6f212260647%3A0x64f4347717659556!2z44K344Kq44OS44Kr44Oq!5e0!3m2!1szh-CN!2sjp!4v1705645600000!5m2!1szh-CN!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white p-12 rounded-[3rem] border border-stone-100 shadow-2xl sticky top-32 space-y-8">
+                <div class="space-y-2 text-center md:text-left">
+                    <p class="text-stone-400 text-xs font-bold uppercase tracking-widest">Price Policy</p>
+                    <h2 class="text-2xl font-bold text-stone-900 leading-tight">参考 Booking 实时价格</h2>
+                </div>
+                <div class="h-px bg-stone-100"></div>
+                <div class="space-y-4">
+                    <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="block w-full text-center bg-stone-900 text-white py-5 rounded-2xl font-bold shadow-lg hover:bg-amber-700 transition-all uppercase tracking-widest">Book Now</a>
+                    <button onclick="toggleContactModal()" class="block w-full text-center border-2 border-stone-100 text-stone-600 py-5 rounded-2xl font-bold hover:bg-stone-50 transition-all uppercase tracking-widest">咨询官方优惠</button>
+                    <p class="text-center text-[10px] text-stone-400 leading-relaxed font-light px-4">提示：通过官方微信/LINE 咨询直定，可享受专属优惠及连住折扣。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="contactModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[110] flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-[3rem] p-10 relative">
+            <button onclick="toggleContactModal()" class="absolute top-8 right-8 text-stone-400 text-2xl">✕</button>
+            <div class="text-center space-y-8">
+                <h2 class="text-3xl brand-font font-bold text-stone-900 tracking-widest uppercase">联系管家</h2>
+                <div class="grid grid-cols-3 gap-6 font-bold">
+                    <div onclick="zoomImage('wechat-qr.png')" class="space-y-2 cursor-pointer group">
+                        <img src="wechat-qr.png" class="w-full rounded-2xl border border-stone-100 group-hover:scale-105 transition shadow-sm">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-tighter">WeChat</p>
+                    </div>
+                    <div onclick="zoomImage('line-qr.png')" class="space-y-2 cursor-pointer group">
+                        <img src="line-qr.png" class="w-full rounded-2xl border border-stone-100 group-hover:scale-105 transition shadow-sm">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-tighter">LINE</p>
+                    </div>
+                    <div onclick="zoomImage('whatsapp-qr.png')" class="space-y-2 cursor-pointer group">
+                        <img src="whatsapp-qr.png" class="w-full rounded-2xl border border-stone-100 group-hover:scale-105 transition shadow-sm">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-tighter">WhatsApp</p>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-2xl flex justify-between items-center text-sm font-bold">
+                    <span class="text-xs text-stone-400 uppercase tracking-widest">Phone</span>
+                    <span>+81 80 4266 7821</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageZoomModal" class="hidden fixed inset-0 bg-black/95 z-[120] flex items-center justify-center p-4" onclick="closeZoom()">
+        <div class="bg-white p-4 rounded-3xl max-w-sm w-full">
+            <img id="zoomedImg" src="" class="w-full h-auto rounded-2xl">
+            <p class="text-center py-6 font-bold text-stone-800 text-sm">长按识别添加管家</p>
+        </div>
+    </div>
+
+    <footer class="bg-stone-50 py-24 text-center">
+        <div class="brand-font text-3xl font-bold tracking-[0.5em] text-stone-300">シオヒカリ</div>
+        <p class="text-stone-300 text-[10px] mt-10 tracking-[0.3em] uppercase">© 2026 SHIO HIKARI OSAKA</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+        function toggleContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.toggle('hidden');
+            document.body.classList.toggle('modal-active');
+        }
+        function zoomImage(src) {
+            document.getElementById('zoomedImg').src = src;
+            document.getElementById('imageZoomModal').classList.remove('hidden');
+        }
+        function closeZoom() {
+            document.getElementById('imageZoomModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

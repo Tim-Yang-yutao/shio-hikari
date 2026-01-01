@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シオヒカリ | SHIO HIKARI - 大阪精品民宿</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #ffffff; color: #2d2a26; scroll-behavior: smooth; }
+        .brand-font { font-family: 'Noto Serif SC', serif; }
+        .text-shadow { text-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .nav-scrolled { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding-top: 0.8rem; padding-bottom: 0.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .property-card { background: #ffffff; border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #f3f3f3; }
+        .property-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1); }
+        @keyframes subtle-zoom { from { transform: scale(1); } to { transform: scale(1.05); } }
+        .animate-zoom { animation: subtle-zoom 15s infinite alternate ease-in-out; }
+        .modal-active { overflow: hidden; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 px-8 py-8 flex justify-between items-center transition-all duration-500">
+        <div class="brand-font text-3xl font-bold tracking-widest text-white transition-colors duration-500" id="nav-logo">シオヒカリ</div>
+        <div class="hidden md:flex gap-12 text-sm uppercase tracking-[0.25em] font-bold text-white transition-colors duration-500" id="nav-links">
+            <a href="#properties" class="hover:opacity-60 transition">Properties</a>
+            <a href="#story" class="hover:opacity-60 transition">Our Story</a>
+            <a href="javascript:void(0)" onclick="toggleContactModal()" class="hover:opacity-60 transition">Contact</a>
+        </div>
+        <button onclick="toggleContactModal()" class="bg-amber-600 text-white px-8 py-3 text-sm rounded-full font-bold tracking-widest hover:bg-amber-700 transition-all shadow-xl">BOOK NOW</button>
+    </nav>
+
+    <section class="relative h-screen w-full overflow-hidden">
+        <img src="fukushima-main.jpg" class="absolute inset-0 w-full h-full object-cover animate-zoom">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-white flex flex-col justify-center items-center text-center px-6 text-white">
+            <h1 class="brand-font text-7xl md:text-9xl mb-8 tracking-[0.2em] text-shadow" data-aos="fade-up">盐与光</h1>
+            <p class="text-lg md:text-2xl tracking-[0.5em] font-medium text-shadow uppercase" data-aos="fade-up" data-aos-delay="200">Shio Hikari · Osaka Stay</p>
+            <div class="mt-20 w-px h-24 bg-white/60"></div>
+        </div>
+    </section>
+
+    <section id="properties" class="max-w-7xl mx-auto px-6 py-32 bg-white">
+        <div class="text-center mb-24" data-aos="fade-up">
+            <h2 class="brand-font text-5xl md:text-7xl mb-6 text-stone-900 font-bold tracking-tight">精品房源</h2>
+            <p class="text-stone-400 tracking-[0.5em] uppercase text-xs font-bold">Discover Your Stay</p>
+            <div class="w-20 h-2 bg-amber-600 mx-auto mt-10 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div data-aos="fade-up" class="property-card overflow-hidden group shadow-sm">
+                <div class="relative h-80 overflow-hidden">
+                    <img src="fukushima-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 bg-amber-600 text-white px-5 py-2 rounded-lg text-[10px] font-bold tracking-[0.2em] shadow-lg">FUKUSHIMA</div>
+                </div>
+                <div class="p-10 text-center">
+                    <h3 class="text-2xl font-bold mb-4 brand-font">シオヒカリ 福島</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-10 h-12 line-clamp-2">三层一户建，百平大空间。靠近 USJ 与梅田。</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-4 rounded-xl text-xs font-bold hover:bg-amber-600 transition shadow-lg tracking-widest uppercase">Booking</a>
+                        <a href="fukushima.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-4 rounded-xl text-xs font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="100" class="property-card overflow-hidden group shadow-sm">
+                <div class="relative h-80 overflow-hidden">
+                    <img src="shinsaibashi-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 bg-amber-600 text-white px-5 py-2 rounded-lg text-[10px] font-bold tracking-[0.2em] shadow-lg">SHINSAIBASHI</div>
+                </div>
+                <div class="p-10 text-center">
+                    <h3 class="text-2xl font-bold mb-4 brand-font">シオヒカリ 心斎橋</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-10 h-12 line-clamp-2">核心地段精品公寓，步行直达道顿堀。</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.booking.com/Share-ugqU0l" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-4 rounded-xl text-xs font-bold hover:bg-amber-600 transition shadow-lg tracking-widest uppercase">Booking</a>
+                        <a href="shinsaibashi.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-4 rounded-xl text-xs font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200" class="property-card overflow-hidden group shadow-sm">
+                <div class="relative h-80 overflow-hidden">
+                    <img src="nipponbashi201-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 bg-amber-600 text-white px-5 py-2 rounded-lg text-[10px] font-bold tracking-[0.2em] shadow-lg">NIPPONBASHI 201</div>
+                </div>
+                <div class="p-10 text-center">
+                    <h3 class="text-2xl font-bold mb-4 brand-font">日本橋 201</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-10 h-12 line-clamp-2">紧邻黑门市场，宽敞双室设计，深度游首选。</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.booking.com/Share-CHDmKX" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-4 rounded-xl text-xs font-bold hover:bg-amber-600 transition shadow-lg tracking-widest uppercase">Booking</a>
+                        <a href="nipponbashi201.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-4 rounded-xl text-xs font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300" class="property-card overflow-hidden group shadow-sm">
+                <div class="relative h-80 overflow-hidden">
+                    <img src="nipponbashi301-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 bg-amber-600 text-white px-5 py-2 rounded-lg text-[10px] font-bold tracking-[0.2em] shadow-lg">NIPPONBASHI 301</div>
+                </div>
+                <div class="p-10 text-center">
+                    <h3 class="text-2xl font-bold mb-4 brand-font">日本橋 301</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-10 h-12 line-clamp-2">高层视野，双卧室设计，享受核心区便利。</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.booking.com/Share-kHiSaI" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-4 rounded-xl text-xs font-bold hover:bg-amber-600 transition shadow-lg tracking-widest uppercase">Booking</a>
+                        <a href="nipponbashi201.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-4 rounded-xl text-xs font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="400" class="property-card overflow-hidden group shadow-sm">
+                <div class="relative h-80 overflow-hidden">
+                    <img src="tennoji-main.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute top-6 left-6 bg-amber-600 text-white px-5 py-2 rounded-lg text-[10px] font-bold tracking-[0.2em] shadow-lg">TENNOJI</div>
+                </div>
+                <div class="p-10 text-center">
+                    <h3 class="text-2xl font-bold mb-4 brand-font">シオヒカリ 天王寺</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-10 h-12 line-clamp-2">带私人大阳台的一户建，纯正和风体验。</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.booking.com/Share-rhszHM" target="_blank" class="flex-1 bg-stone-900 text-white text-center py-4 rounded-xl text-xs font-bold hover:bg-amber-600 transition shadow-lg tracking-widest uppercase">Booking</a>
+                        <a href="tennoji.html" class="flex-1 border-2 border-stone-100 text-stone-400 text-center py-4 rounded-xl text-xs font-bold hover:bg-stone-50 transition tracking-widest uppercase">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="max-w-7xl mx-auto px-6 py-40 border-t border-stone-100">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
+            <div class="relative h-[700px] w-full" data-aos="fade-right">
+                <div class="absolute top-0 left-0 w-[60%] h-72 rounded-[3rem] overflow-hidden shadow-xl rotate-[-3deg] z-10 transition-all hover:rotate-0 hover:z-40 duration-500">
+                    <img src="fukushima-4.jpg" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="absolute top-28 right-0 w-[55%] h-80 rounded-[3rem] overflow-hidden shadow-2xl rotate-[4deg] z-20 transition-all hover:rotate-0 hover:z-40 duration-500 border-8 border-white">
+                    <img src="nipponbashi201-2.jpg" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="absolute top-[35%] left-[10%] w-[65%] h-[380px] rounded-[3.5rem] border-[15px] border-white overflow-hidden shadow-2xl z-30 transition-transform hover:scale-105 duration-700">
+                    <img src="shinsaibashi-main.jpg" class="w-full h-full object-cover">
+                </div>
+
+                <div class="absolute bottom-4 left-0 bg-amber-600 text-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl z-40" data-aos="fade-up" data-aos-delay="500">
+                    <p class="brand-font text-2xl md:text-4xl font-bold leading-relaxed italic">
+                        “作世上的盐，<br>&nbsp;&nbsp;作世上的光”
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-12 text-center lg:text-left" data-aos="fade-left">
+                <div class="space-y-4">
+                    <p class="text-amber-600 font-bold tracking-[0.4em] text-sm uppercase">About SHIO HIKARI</p>
+                    <h2 class="brand-font text-5xl md:text-7xl text-stone-900 leading-tight font-bold">在大阪的街道中<br>寻回家的温度</h2>
+                </div>
+                <div class="space-y-8 text-stone-600 text-lg leading-loose font-normal">
+                    <p>「シオヒカリ」不仅仅是一家民宿品牌，更是一种生活哲学。盐是调味之本，光是温暖之源。我们在大阪的心脏地带，亲手打磨每一处居所。</p>
+                    <div class="pl-8 border-l-4 border-amber-600 py-2 italic font-light text-stone-800">
+                        坚持直营管理，确保每一张床单的整洁，每一盏灯光的明亮。让每一位跨越海洋而来的旅人，都能感受到被珍视的归属感。
+                    </div>
+                </div>
+                <div class="flex items-center justify-center lg:justify-start gap-6 pt-6">
+                    <div class="w-20 h-20 bg-stone-50 rounded-full flex items-center justify-center text-4xl shadow-inner border border-stone-100">🏮</div>
+                    <div class="text-left">
+                        <p class="font-bold text-stone-900 text-2xl brand-font tracking-widest">SHIO HIKARI 团队</p>
+                        <p class="text-sm text-amber-600 font-bold uppercase tracking-[0.2em]">Premium Osaka Stay</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-[3rem] overflow-hidden shadow-2xl relative p-10">
+            <button onclick="toggleContactModal()" class="absolute top-8 right-8 text-stone-400 text-2xl">✕</button>
+            <div class="text-center">
+                <h2 class="text-3xl brand-font mb-4 text-stone-900 font-bold">联系 シ奥ヒカリ</h2>
+                <div class="grid grid-cols-3 gap-6 my-12">
+                    <div onclick="zoomImage('wechat-qr.png')" class="cursor-pointer group">
+                        <div class="w-24 h-24 mx-auto bg-stone-50 rounded-2xl p-3 border group-hover:scale-105 transition"><img src="wechat-qr.png" class="w-full h-full object-cover"></div>
+                        <p class="text-[10px] mt-3 font-bold text-stone-800 tracking-tighter uppercase">WeChat</p>
+                    </div>
+                    <div onclick="zoomImage('line-qr.png')" class="cursor-pointer group">
+                        <div class="w-24 h-24 mx-auto bg-stone-50 rounded-2xl p-3 border group-hover:scale-105 transition"><img src="line-qr.png" class="w-full h-full object-cover"></div>
+                        <p class="text-[10px] mt-3 font-bold text-stone-800 tracking-tighter uppercase">LINE</p>
+                    </div>
+                    <div onclick="zoomImage('whatsapp-qr.png')" class="cursor-pointer group">
+                        <div class="w-24 h-24 mx-auto bg-stone-50 rounded-2xl p-3 border group-hover:scale-105 transition"><img src="whatsapp-qr.png" class="w-full h-full object-cover"></div>
+                        <p class="text-[10px] mt-3 font-bold text-stone-800 tracking-tighter uppercase">WhatsApp</p>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-2xl flex justify-between items-center text-sm font-bold text-stone-900">
+                    <span class="text-xs text-stone-400 uppercase">Phone</span>
+                    <span>+81 80 4266 7821</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageZoomModal" class="hidden fixed inset-0 bg-black/95 z-[110] flex items-center justify-center p-4" onclick="closeZoom()">
+        <div class="bg-white p-4 rounded-3xl max-w-sm w-full">
+            <img id="zoomedImg" src="" class="w-full h-auto rounded-2xl">
+            <p class="text-center py-6 font-bold text-stone-800 text-sm">长按识别或扫码添加</p>
+        </div>
+    </div>
+
+    <footer class="bg-stone-950 py-32 text-center text-stone-300 text-[10px] tracking-[0.8em] uppercase font-bold border-t border-white/5">
+        © 2026 SHIO HIKARI OSAKA. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        const navLinks = document.getElementById('nav-links');
+
+        window.onscroll = function() {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('nav-scrolled');
+                navLogo.classList.replace('text-white', 'text-stone-900');
+                navLinks.classList.replace('text-white', 'text-stone-600');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navLogo.classList.replace('text-stone-900', 'text-white');
+                navLinks.classList.replace('text-stone-600', 'text-white');
+            }
+        };
+
+        function toggleContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.toggle('hidden');
+            document.body.classList.toggle('modal-active');
+        }
+        function zoomImage(imgSrc) {
+            document.getElementById('zoomedImg').src = imgSrc;
+            document.getElementById('imageZoomModal').classList.remove('hidden');
+        }
+        function closeZoom() {
+            document.getElementById('imageZoomModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
