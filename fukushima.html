@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>详情 | シオヒカリ 福島</title>
+    <title>详情 | シ奥ヒカリ 福島</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -14,13 +14,16 @@
         .facility-card { background: #faf9f8; border: 1px solid #f1f0ee; }
         .modal-active { overflow: hidden; }
         
-        /* 手机端拼图样式 */
+        /* 手机端拼图布局 */
         .mobile-collage { display: grid; grid-template-columns: 2.5fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; height: 300px; }
         .mobile-collage div:first-child { grid-row: span 2; }
         
         /* 全屏画廊样式 */
         #fullGallery { transition: all 0.3s ease; scroll-behavior: smooth; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* 地图容器修正 */
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body class="overflow-x-hidden text-stone-800 pb-20 md:pb-0">
@@ -30,155 +33,163 @@
             <span class="text-lg">←</span> <span class="hidden md:inline">返回首页</span>
         </a>
         <div class="brand-font text-lg md:text-2xl tracking-widest font-bold text-stone-900 uppercase">シオヒカリ <span class="text-amber-700 font-light">福島</span></div>
-        <button onclick="toggleContactModal()" class="bg-stone-800 text-white px-4 md:px-5 py-2 text-[10px] md:text-xs rounded-full uppercase tracking-widest font-bold">Contact</button>
+        <button onclick="toggleContactModal()" class="bg-stone-800 text-white px-4 md:px-5 py-2 text-[10px] md:text-xs rounded-full uppercase tracking-widest font-bold active:scale-95 transition">Contact</button>
     </nav>
 
     <section class="max-w-7xl mx-auto pt-4 md:pt-8 px-4 md:px-6">
-        
-        <div class="block md:hidden relative rounded-2xl overflow-hidden" onclick="openFullGallery()">
+        <div class="block md:hidden relative rounded-2xl overflow-hidden cursor-pointer shadow-lg" onclick="openFullGallery()">
             <div class="mobile-collage">
                 <div class="overflow-hidden"><img src="fukushima-main.jpg" class="w-full h-full object-cover"></div>
                 <div class="overflow-hidden"><img src="fukushima-1.jpg" class="w-full h-full object-cover"></div>
                 <div class="overflow-hidden"><img src="fukushima-2.jpg" class="w-full h-full object-cover"></div>
             </div>
-            <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur shadow-lg px-4 py-2 rounded-lg text-[10px] font-bold tracking-widest flex items-center gap-2">
+            <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur shadow-md px-4 py-2 rounded-lg text-[10px] font-bold tracking-widest flex items-center gap-2">
                 <span>VIEW ALL 6 PHOTOS</span>
             </div>
         </div>
 
-        <div class="hidden md:grid grid-cols-6 grid-rows-2 gap-3 h-[550px] rounded-[2.5rem] overflow-hidden shadow-xl bg-white" onclick="openFullGallery()">
-            <div class="col-span-3 row-span-2 overflow-hidden cursor-pointer"><img src="fukushima-main.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
-            <div class="overflow-hidden cursor-pointer"><img src="fukushima-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
-            <div class="overflow-hidden cursor-pointer"><img src="fukushima-2.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
-            <div class="overflow-hidden cursor-pointer"><img src="fukushima-3.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
-            <div class="overflow-hidden cursor-pointer"><img src="fukushima-4.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
-            <div class="col-span-2 overflow-hidden cursor-pointer"><img src="fukushima-5.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+        <div class="hidden md:grid grid-cols-6 grid-rows-2 gap-3 h-[550px] rounded-[2.5rem] overflow-hidden shadow-xl bg-white transition-all">
+            <div class="col-span-3 row-span-2 overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-main.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-2.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-3.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-4.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="col-span-2 overflow-hidden cursor-pointer" onclick="openFullGallery()">
+                <img src="fukushima-5.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+            </div>
         </div>
     </section>
 
     <div id="fullGallery" class="hidden fixed inset-0 bg-white z-[200] overflow-y-auto no-scrollbar">
-        <div class="sticky top-0 bg-white/90 backdrop-blur-md px-6 py-5 flex justify-between items-center z-10 border-b border-stone-100">
-            <span class="brand-font font-bold">所有图片 (6)</span>
-            <button onclick="closeFullGallery()" class="text-2xl">✕</button>
+        <div class="sticky top-0 bg-white/95 backdrop-blur-md px-6 py-5 flex justify-between items-center z-10 border-b border-stone-100">
+            <span class="brand-font font-bold tracking-widest text-stone-900">所有图片 (6)</span>
+            <button onclick="closeFullGallery()" class="text-2xl p-2">✕</button>
         </div>
         <div class="p-4 space-y-4 max-w-4xl mx-auto">
-            <img src="fukushima-main.jpg" class="w-full rounded-xl shadow-sm">
-            <img src="fukushima-1.jpg" class="w-full rounded-xl shadow-sm">
-            <img src="fukushima-2.jpg" class="w-full rounded-xl shadow-sm">
-            <img src="fukushima-3.jpg" class="w-full rounded-xl shadow-sm">
-            <img src="fukushima-4.jpg" class="w-full rounded-xl shadow-sm">
-            <img src="fukushima-5.jpg" class="w-full rounded-xl shadow-sm">
+            <img src="fukushima-main.jpg" class="w-full rounded-2xl shadow-sm">
+            <img src="fukushima-1.jpg" class="w-full rounded-2xl shadow-sm">
+            <img src="fukushima-2.jpg" class="w-full rounded-2xl shadow-sm">
+            <img src="fukushima-3.jpg" class="w-full rounded-2xl shadow-sm">
+            <img src="fukushima-4.jpg" class="w-full rounded-2xl shadow-sm">
+            <img src="fukushima-5.jpg" class="w-full rounded-2xl shadow-sm">
         </div>
     </div>
 
     <main class="max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16 py-10 md:py-20">
-        
-        <div class="lg:col-span-2 space-y-12 md:space-y-16">
-            
+        <div class="lg:col-span-2 space-y-12 md:space-y-16" data-aos="fade-right">
             <div class="space-y-4">
                 <p class="text-amber-600 font-bold tracking-[0.3em] text-[10px] md:text-sm uppercase">Fukushima Premium House</p>
                 <h1 class="text-3xl md:text-5xl brand-font font-bold leading-tight text-stone-900">精品三层独栋 · 福岛店</h1>
                 <p class="text-stone-400 italic text-sm md:text-lg">📍 大阪府大阪市福島区 (阪神野田站步行 10 分钟)</p>
             </div>
 
-            <div class="space-y-6 md:space-y-8 leading-loose text-stone-600 text-base md:text-lg font-light">
+            <div class="space-y-6 md:space-y-8 leading-loose text-stone-600 text-base md:text-lg font-light text-justify">
                 <p>シオヒカリ · 福岛店是一栋独立的三层一户建住宅，专为追求品质与私密空间的家庭或团体旅行者打造。100平米的开阔面积，将生活、社交与睡眠区域完美分割。</p>
                 <p>房屋坐落于大阪极具人气的“美食之都”——福岛区。步行 10 分钟即可抵达 阪神野田站。无论是前往梅田商圈还是环球影城 USJ，这里都是您探索大阪的理想原点。</p>
-                <div class="pl-4 md:pl-8 border-l-4 border-amber-600 py-2 italic font-medium text-stone-800 text-sm md:text-base">
+                <div class="pl-5 md:pl-8 border-l-4 border-amber-600 py-2 italic font-medium text-stone-800 text-sm md:text-base">
                     “我们不仅提供一处住所，更是在繁华大阪为您守候的一份归属感。”
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                <div class="bg-stone-50 p-5 md:p-6 rounded-2xl text-center">
-                    <p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest">Space</p>
-                    <p class="text-base md:text-xl font-bold">100 m²</p>
-                </div>
-                <div class="bg-stone-50 p-5 md:p-6 rounded-2xl text-center">
-                    <p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest">Guests</p>
-                    <p class="text-base md:text-xl font-bold">8 人</p>
-                </div>
-                <div class="bg-stone-50 p-5 md:p-6 rounded-2xl text-center">
-                    <p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest">Beds</p>
-                    <p class="text-base md:text-xl font-bold">3 双人床</p>
-                </div>
-                <div class="bg-stone-50 p-5 md:p-6 rounded-2xl text-center">
-                    <p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest">Access</p>
-                    <p class="text-[10px] md:text-lg font-bold leading-tight mt-1">阪神野田站</p>
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 font-medium">
+                <div class="bg-stone-50 p-5 md:p-6 rounded-3xl text-center"><p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest mb-1">Space</p><p class="text-lg md:text-xl">100 m²</p></div>
+                <div class="bg-stone-50 p-5 md:p-6 rounded-3xl text-center"><p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest mb-1">Guests</p><p class="text-lg md:text-xl">8 人</p></div>
+                <div class="bg-stone-50 p-5 md:p-6 rounded-3xl text-center"><p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest mb-1">Beds</p><p class="text-lg md:text-xl">3 双人床</p></div>
+                <div class="bg-stone-50 p-5 md:p-6 rounded-3xl text-center"><p class="text-[9px] text-stone-400 uppercase font-bold tracking-widest mb-1">Access</p><p class="text-xs md:text-lg leading-tight">阪神野田站</p></div>
             </div>
 
-            <div class="space-y-6 md:space-y-10">
-                <h3 class="text-2xl md:text-3xl brand-font font-bold">房屋配套设施</h3>
+            <div class="space-y-8">
+                <h3 class="text-2xl md:text-3xl brand-font font-bold tracking-wide">房屋配套设施</h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">📶</span><span class="font-bold text-sm md:text-base text-stone-800">高速 WiFi</span>
-                    </div>
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">🔑</span><span class="font-bold text-sm md:text-base text-stone-800">自动入住</span>
-                    </div>
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">❄️</span><span class="font-bold text-sm md:text-base text-stone-800">冷暖空调</span>
-                    </div>
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">🛁</span><span class="font-bold text-sm md:text-base text-stone-800">独立卫浴</span>
-                    </div>
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">🧺</span><span class="font-bold text-sm md:text-base text-stone-800">洗干一体机</span>
-                    </div>
-                    <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
-                        <span class="text-2xl md:text-3xl">🩴</span><span class="font-bold text-sm md:text-base text-stone-800">全套备品</span>
-                    </div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">📶</span><span class="font-bold text-sm md:text-base text-stone-700">高速 WiFi</span></div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">🔑</span><span class="font-bold text-sm md:text-base text-stone-700">自动入住</span></div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">❄️</span><span class="font-bold text-sm md:text-base text-stone-700">冷暖空调</span></div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">🛁</span><span class="font-bold text-sm md:text-base text-stone-700">独立卫浴</span></div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">🧺</span><span class="font-bold text-sm md:text-base text-stone-700">洗干一体机</span></div>
+                    <div class="facility-card p-5 rounded-2xl flex items-center gap-4 transition-all hover:shadow-sm"><span class="text-2xl">🩴</span><span class="font-bold text-sm md:text-base text-stone-700">全套备品</span></div>
                 </div>
             </div>
 
-            <div class="space-y-6 md:space-y-8">
-                <h3 class="text-2xl md:text-3xl brand-font font-bold">地理位置</h3>
-                <div class="h-64 md:h-96 w-full shadow-inner overflow-hidden rounded-[1.5rem] md:rounded-[3rem] border-4 md:border-8 border-stone-50">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.4682397686566!2d135.47414907633215!3d34.69339308436109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e66336e3c04d%3A0xc39744473e167c13!2zSGFuc2hpbi1Ob2RhIFN0YXRpb24!5e0!3m2!1sen!2sjp!4v1710000000000!5m2!1sen!2sjp" allowfullscreen="" loading="lazy"></iframe>
+            <div class="space-y-6">
+                <h3 class="text-2xl md:text-3xl brand-font font-bold tracking-wide">地理位置</h3>
+                <div class="map-container h-72 md:h-96 w-full shadow-inner overflow-hidden rounded-[2rem] md:rounded-[3rem] border-4 md:border-8 border-stone-50">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.443126780004!2d135.47466837632616!3d34.69399868393527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6616422a10b%3A0x6a059d332617f693!2z56aP5bO26aeF!5e0!3m2!1szh-CN!2sjp!4v1715830000000!5m2!1szh-CN!2sjp" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
 
         <div class="hidden lg:block lg:col-span-1">
             <div class="bg-white p-10 rounded-[3rem] border border-stone-100 shadow-2xl sticky top-32 space-y-8 text-center">
-                <h2 class="text-xl font-bold text-stone-900">参考 Booking 实时价格</h2>
-                <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="block w-full bg-stone-900 text-white py-5 rounded-2xl font-bold uppercase tracking-widest">Book Now</a>
-                <button onclick="toggleContactModal()" class="block w-full border-2 border-stone-100 text-stone-600 py-5 rounded-2xl font-bold uppercase">咨询官方优惠</button>
+                <div class="space-y-2">
+                    <p class="text-stone-400 text-xs font-bold uppercase tracking-widest">Price Policy</p>
+                    <h2 class="text-xl font-bold text-stone-900 leading-tight">参考 Booking 实时价格</h2>
+                </div>
+                <div class="h-px bg-stone-100"></div>
+                <div class="space-y-4">
+                    <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="block w-full bg-stone-900 text-white py-5 rounded-2xl font-bold shadow-lg hover:bg-amber-700 transition-all uppercase tracking-widest">Book Now</a>
+                    <button onclick="toggleContactModal()" class="block w-full border-2 border-stone-100 text-stone-600 py-5 rounded-2xl font-bold hover:bg-stone-50 transition-all uppercase tracking-widest">咨询官方优惠</button>
+                    <p class="text-[10px] text-stone-400 font-light px-4">提示：连住客咨询直订可享额外专属折扣。</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md px-5 py-3 flex items-center justify-between z-[100] border-t border-stone-100">
-        <div class="flex flex-col"><span class="text-[10px] text-stone-400 font-bold uppercase">Stay at Fukushima</span><span class="text-xs font-bold text-stone-900">查阅 Booking 价格</span></div>
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md px-5 py-3 flex items-center justify-between z-[100] border-t border-stone-100 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+        <div class="flex flex-col">
+            <span class="text-[10px] text-stone-400 font-bold uppercase tracking-tight">Stay at Fukushima</span>
+            <span class="text-xs font-bold text-stone-900">参考 Booking 实时价格</span>
+        </div>
         <div class="flex gap-2">
-            <button onclick="toggleContactModal()" class="bg-stone-100 text-stone-700 p-3 rounded-full"><span class="text-xl">💬</span></button>
-            <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="bg-amber-600 text-white px-6 py-3 rounded-full text-xs font-bold shadow-lg uppercase tracking-wider">立即预订</a>
+            <button onclick="toggleContactModal()" class="bg-stone-100 text-stone-700 p-3 rounded-full active:scale-90 transition"><span class="text-xl">💬</span></button>
+            <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="bg-amber-600 text-white px-6 py-3 rounded-full text-xs font-bold shadow-lg active:scale-95 transition-transform uppercase tracking-wider">立即预订</a>
         </div>
     </div>
 
     <div id="contactModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[210] flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-10 relative text-center space-y-8">
-            <button onclick="toggleContactModal()" class="absolute top-6 right-6 text-stone-400">✕</button>
-            <h2 class="text-2xl brand-font font-bold uppercase">联系管家</h2>
-            <div class="grid grid-cols-3 gap-4">
-                <img src="wechat-qr.png" class="rounded-xl border shadow-sm"><img src="line-qr.png" class="rounded-xl border shadow-sm"><img src="whatsapp-qr.png" class="rounded-xl border shadow-sm">
+        <div class="bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-10 relative text-center space-y-8 shadow-2xl">
+            <button onclick="toggleContactModal()" class="absolute top-6 right-6 text-stone-400 text-2xl p-2">✕</button>
+            <h2 class="text-2xl md:text-3xl brand-font font-bold uppercase tracking-widest">联系管家</h2>
+            <div class="grid grid-cols-3 gap-3 md:gap-4 px-2">
+                <div class="space-y-2"><img src="wechat-qr.png" class="rounded-xl border shadow-sm"><p class="text-[9px] text-stone-400 font-bold">WECHAT</p></div>
+                <div class="space-y-2"><img src="line-qr.png" class="rounded-xl border shadow-sm"><p class="text-[9px] text-stone-400 font-bold">LINE</p></div>
+                <div class="space-y-2"><img src="whatsapp-qr.png" class="rounded-xl border shadow-sm"><p class="text-[9px] text-stone-400 font-bold">WHATSAPP</p></div>
             </div>
-            <div class="bg-stone-50 p-5 rounded-2xl flex justify-between font-bold text-sm"><span class="text-stone-400 uppercase">Phone</span><span>+81 80 4266 7821</span></div>
+            <div class="bg-stone-50 p-5 rounded-2xl flex justify-between font-bold text-sm tracking-wide">
+                <span class="text-stone-400 uppercase">Phone</span>
+                <span>+81 80 4266 7821</span>
+            </div>
         </div>
     </div>
 
-    <footer class="bg-stone-50 py-16 text-center text-stone-200 brand-font text-xl tracking-[0.5em] font-bold uppercase">シオヒカリ</footer>
+    <footer class="bg-stone-50 py-16 text-center">
+        <div class="brand-font text-2xl md:text-3xl font-bold tracking-[0.5em] text-stone-200">シオヒカリ</div>
+        <p class="text-stone-300 text-[10px] mt-8 tracking-[0.3em] uppercase font-bold">© 2026 SHIO HIKARI OSAKA</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // 初始化 AOS
         AOS.init({ duration: 1000, once: true });
 
-        // 全屏画廊开关
+        // 全屏画廊开关逻辑
         function openFullGallery() {
             const gallery = document.getElementById('fullGallery');
             gallery.classList.remove('hidden');
-            document.body.classList.add('modal-active');
+            document.body.classList.add('modal-active'); // 禁止底层滚动
         }
         function closeFullGallery() {
             const gallery = document.getElementById('fullGallery');
@@ -186,10 +197,15 @@
             document.body.classList.remove('modal-active');
         }
 
-        // 联系弹窗
+        // 联系弹窗逻辑
         function toggleContactModal() {
-            document.getElementById('contactModal').classList.toggle('hidden');
-            document.body.classList.toggle('modal-active');
+            const modal = document.getElementById('contactModal');
+            modal.classList.toggle('hidden');
+            if(!modal.classList.contains('hidden')) {
+                document.body.classList.add('modal-active');
+            } else {
+                document.body.classList.remove('modal-active');
+            }
         }
     </script>
 </body>
