@@ -20,11 +20,12 @@
         
         /* 移动端底部悬浮条阴影 */
         .mobile-sticky-bar { box-shadow: 0 -5px 20px rgba(0,0,0,0.08); }
-        
-        /* 针对不同屏幕微调图片比例 */
-        @media (max-width: 768px) {
-            .hero-gallery-height { height: 350px !important; }
-        }
+
+        /* --- 新增：手机端横滑画廊专用样式 --- */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .snap-x-container { scroll-snap-type: x mandatory; }
+        .snap-center-item { scroll-snap-align: center; }
     </style>
 </head>
 <body class="overflow-x-hidden text-stone-800 pb-20 md:pb-0">
@@ -37,16 +38,46 @@
         <button onclick="toggleContactModal()" class="bg-stone-800 text-white px-4 md:px-5 py-2 text-[10px] md:text-xs rounded-full hover:bg-amber-700 transition uppercase tracking-widest font-bold">Contact</button>
     </nav>
 
-    <section class="max-w-7xl mx-auto pt-4 md:pt-8 px-4 md:px-6" data-aos="zoom-in-up">
-        <div class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-2 md:gap-3 h-auto md:h-[550px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-xl bg-white">
-            <div class="md:col-span-3 md:row-span-2 h-72 md:h-full overflow-hidden">
+    <section class="max-w-7xl mx-auto pt-4 md:pt-8 px-0 md:px-6" data-aos="zoom-in-up">
+        
+        <div class="block md:hidden relative">
+            <div id="mobileGallery" class="flex overflow-x-auto snap-x-container no-scrollbar h-[350px]">
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-main.jpg')">
+                    <img src="fukushima-main.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-1.jpg')">
+                    <img src="fukushima-1.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-2.jpg')">
+                    <img src="fukushima-2.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-3.jpg')">
+                    <img src="fukushima-3.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-4.jpg')">
+                    <img src="fukushima-4.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-full h-full snap-center-item" onclick="zoomImage('fukushima-5.jpg')">
+                    <img src="fukushima-5.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest z-10">
+                <span id="galleryIndex">1</span> / 6
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+                <div id="scrollProgress" class="h-full bg-amber-600 transition-all duration-300" style="width: 16.6%"></div>
+            </div>
+        </div>
+
+        <div class="hidden md:grid grid-cols-6 grid-rows-2 gap-3 h-[550px] rounded-[2.5rem] overflow-hidden shadow-xl bg-white">
+            <div class="col-span-3 row-span-2 overflow-hidden" onclick="zoomImage('fukushima-main.jpg')">
                 <img src="fukushima-main.jpg" class="gallery-img w-full h-full object-cover">
             </div>
-            <div class="hidden md:block overflow-hidden"><img src="fukushima-1.jpg" class="gallery-img w-full h-full object-cover"></div>
-            <div class="hidden md:block overflow-hidden"><img src="fukushima-2.jpg" class="gallery-img w-full h-full object-cover"></div>
-            <div class="hidden md:block overflow-hidden"><img src="fukushima-3.jpg" class="gallery-img w-full h-full object-cover"></div>
-            <div class="hidden md:block overflow-hidden"><img src="fukushima-4.jpg" class="gallery-img w-full h-full object-cover"></div>
-            <div class="hidden md:block md:col-span-2 overflow-hidden"><img src="fukushima-5.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden" onclick="zoomImage('fukushima-1.jpg')"><img src="fukushima-1.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden" onclick="zoomImage('fukushima-2.jpg')"><img src="fukushima-2.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden" onclick="zoomImage('fukushima-3.jpg')"><img src="fukushima-3.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="overflow-hidden" onclick="zoomImage('fukushima-4.jpg')"><img src="fukushima-4.jpg" class="gallery-img w-full h-full object-cover"></div>
+            <div class="col-span-2 overflow-hidden" onclick="zoomImage('fukushima-5.jpg')"><img src="fukushima-5.jpg" class="gallery-img w-full h-full object-cover"></div>
         </div>
     </section>
 
@@ -92,27 +123,27 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">📶</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">高速 WiFi</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">高速 WiFi</p></div>
                     </div>
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">🔑</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">自动入住</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">自动入住</p></div>
                     </div>
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">❄️</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">冷暖空调</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">冷暖空调</p></div>
                     </div>
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">🛁</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">独立卫浴</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">独立卫浴</p></div>
                     </div>
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">🧺</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">洗干一体机</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">洗干一体机</p></div>
                     </div>
                     <div class="facility-card p-4 md:p-6 rounded-2xl flex items-center gap-3 md:gap-4">
                         <span class="text-2xl md:text-3xl">🩴</span>
-                        <div><p class="font-bold text-sm md:text-base text-stone-800">全套备品</p></div>
+                        <div><p class="font-bold text-sm md:text-base text-stone-800 leading-tight">全套备品</p></div>
                     </div>
                 </div>
             </div>
@@ -126,16 +157,16 @@
         </div>
 
         <div class="hidden lg:block lg:col-span-1">
-            <div class="bg-white p-10 rounded-[3rem] border border-stone-100 shadow-2xl sticky top-32 space-y-8">
+            <div class="bg-white p-10 rounded-[3rem] border border-stone-100 shadow-2xl sticky top-32 space-y-8 text-center">
                 <div class="space-y-2">
-                    <p class="text-stone-400 text-xs font-bold uppercase tracking-widest text-center">Price Policy</p>
-                    <h2 class="text-xl font-bold text-stone-900 text-center">参考 Booking 实时价格</h2>
+                    <p class="text-stone-400 text-xs font-bold uppercase tracking-widest">Price Policy</p>
+                    <h2 class="text-xl font-bold text-stone-900">参考 Booking 实时价格</h2>
                 </div>
                 <div class="h-px bg-stone-100"></div>
-                <div class="space-y-4 text-center">
+                <div class="space-y-4">
                     <a href="https://www.booking.com/Share-MitpkO" target="_blank" class="block w-full bg-stone-900 text-white py-5 rounded-2xl font-bold shadow-lg hover:bg-amber-700 transition-all uppercase tracking-widest">Book Now</a>
                     <button onclick="toggleContactModal()" class="block w-full border-2 border-stone-100 text-stone-600 py-5 rounded-2xl font-bold hover:bg-stone-50 transition-all uppercase tracking-widest">咨询官方优惠</button>
-                    <p class="text-[10px] text-stone-400 font-light px-4">提示：直订或连住客可享额外惊喜折扣。</p>
+                    <p class="text-[10px] text-stone-400 font-light px-4 leading-relaxed">提示：直订或连住客可享额外惊喜折扣。</p>
                 </div>
             </div>
         </div>
@@ -143,7 +174,7 @@
 
     <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md px-5 py-3 flex items-center justify-between z-[100] mobile-sticky-bar border-t border-stone-100">
         <div class="flex flex-col">
-            <span class="text-[10px] text-stone-400 font-bold uppercase">Stay at Fukushima</span>
+            <span class="text-[10px] text-stone-400 font-bold uppercase tracking-tighter">Stay at Fukushima</span>
             <span class="text-xs font-bold text-stone-900">参考 Booking 实时价格</span>
         </div>
         <div class="flex gap-2">
@@ -198,17 +229,41 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
+
+        // 联系弹窗逻辑
         function toggleContactModal() {
             const modal = document.getElementById('contactModal');
             modal.classList.toggle('hidden');
             document.body.classList.toggle('modal-active');
         }
+
+        // 图片放大逻辑 (同时兼容手机横滑点击)
         function zoomImage(src) {
             document.getElementById('zoomedImg').src = src;
             document.getElementById('imageZoomModal').classList.remove('hidden');
         }
         function closeZoom() {
             document.getElementById('imageZoomModal').classList.add('hidden');
+        }
+
+        // --- 手机端画廊滑动监听逻辑 ---
+        const gallery = document.getElementById('mobileGallery');
+        const indexDisplay = document.getElementById('galleryIndex');
+        const progressBar = document.getElementById('scrollProgress');
+
+        if(gallery) {
+            gallery.addEventListener('scroll', () => {
+                const scrollLeft = gallery.scrollLeft;
+                const width = gallery.clientWidth;
+                // 计算当前是第几张图 (基于 6 张图)
+                const newIndex = Math.round(scrollLeft / width) + 1;
+                const total = 6; 
+                
+                // 更新页码文字
+                indexDisplay.innerText = newIndex;
+                // 更新底部进度条宽度
+                progressBar.style.width = `${(newIndex / total) * 100}%`;
+            });
         }
     </script>
 </body>
